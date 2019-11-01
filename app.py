@@ -35,16 +35,18 @@ def get_answer():
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX dbo: <http://dbpedia.org/ontology/>
-        SELECT ?cityLabel ?numberOfInhabitants
-                where {
-                 ?s rdf:type dbo:City .
+        PREFIX yago: <http://dbpedia.org/class/yago/>
+        SELECT DISTINCT ?cityLabel ?numberOfInhabitants
+        WHERE {
+                 VALUES ?placeType { dbo:City yago:City108524735 }
+                 ?s rdf:type ?placeType .
                  ?s rdfs:label ?cityLabel .
                  filter(contains(lcase(?cityLabel),"%s")) .
                  filter(LANG(?cityLabel) = "en") .
                  ?s dbo:populationTotal ?numberOfInhabitants .  
         }
         ORDER BY DESC (?numberOfInhabitants)
-        LIMIT 10
+        LIMIT 100
     """ % (cities[0].lower()))
 
     sparql.setReturnFormat(JSON)
