@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request, flash, session, url_for, redirect, make_response
 from passlib.hash import sha256_crypt
-from datetime import timedelta
+from datetime import timedelta, datetime
 import requests
 from SPARQLWrapper import SPARQLWrapper, JSON
 import spacy
 
 nlp = spacy.load("en_core_web_sm")
 app = Flask(__name__)
-app.secret_key = '12345678'
+app.secret_key = str(datetime.now().time())
 
 def get_cities_for_a_text(text):
     doc = nlp(text)
