@@ -68,3 +68,10 @@
   margin-bottom: 20px;
 }
 
+#question_pattern_description {
+    margin-top: 1ex;
+}
+
+#question_pattern_description div {
+    font-style: italic;
+}
