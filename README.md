@@ -7,10 +7,14 @@ Navigate to project folder and run following commands in the terminal:
 
 `pip install -r requirements.txt`
 
-`python -m spacy download en_core_web_sm --default-timeout=50000`
-
-*Note:* Sometimes spacy has download issues. Therefore, increasing the timeout is recommended.
 
 ## Status of the project
 
-Currently system can answer only questions related to intent "How many people live in X?" (where X is a city name). To be extended ...
+Currently system can answer following questions:
+
+* How many people live in `<city>`? / What is the number of inhabitants in `<city>`? ...
+* Was `<person>` born in `<city>`?
+* Calculate distance between `<city1>` and `<city2>`
+
+In progress:
+* What is the temperature in `<month>` in `<city>`?
